@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { TakePicPage , SearchMedicalPage } from '../pages';
-
 
 /**
- * Generated class for the HomePage page.
+ * Generated class for the SearchMedicalPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,23 +10,16 @@ import { TakePicPage , SearchMedicalPage } from '../pages';
 
 @IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html',
+  selector: 'page-search-medical',
+  templateUrl: 'search-medical.html',
 })
-export class HomePage {
+export class SearchMedicalPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
+    console.log('ionViewDidLoad SearchMedicalPage');
   }
 
-  GoToTakePic(){
-      this.navCtrl.push(TakePicPage);
-  }
-
-  GoToSearchMedical(){
-    this.navCtrl.push(SearchMedicalPage);
-  }
 }
