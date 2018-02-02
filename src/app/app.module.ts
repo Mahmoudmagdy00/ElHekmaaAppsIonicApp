@@ -7,6 +7,8 @@ import { HomePage , TakePicPage , SearchMedicalPage , TabsPage } from '../pages/
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Camera } from '@ionic-native/camera';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ HomePage , TakePicPage , SearchMedicalPage ,TabsPage
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

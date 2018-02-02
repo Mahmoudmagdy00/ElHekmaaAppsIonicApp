@@ -4,9 +4,10 @@ import { TakePicPage } from './take-pic';
 
 @NgModule({
   declarations: [
-    TakePicPage,
+    TakePicPage
   ],
   imports: [
+
     IonicPageModule.forChild(TakePicPage),
   ],
 })

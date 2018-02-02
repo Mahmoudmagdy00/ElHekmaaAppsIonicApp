@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { Camera, CameraOptions } from '@ionic-native/camera';
 /**
  * Generated class for the TakePicPage page.
  *
@@ -14,12 +14,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'take-pic.html',
 })
 export class TakePicPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public base64Image: string;
+  constructor(public navCtrl: NavController, public navParams: NavParams , private _cam : Camera) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TakePicPage');
+  }
+
+
+  takePicture(){
+    this._cam.getPicture({
+        destinationType: this._cam.DestinationType.DATA_URL,
+        targetWidth: 1000,
+        targetHeight: 1000
+    }).then((imageData) => {
+      // imageData is a base64 encoded string
+        this.base64Image = "data:image/jpeg;base64," + imageData;
+    }, (err) => {
+        console.log(err);
+    });
   }
 
 }
