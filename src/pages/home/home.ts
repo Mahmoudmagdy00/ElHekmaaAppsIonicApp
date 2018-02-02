@@ -25,10 +25,13 @@ export class HomePage {
   }
 
   GoToTakePic(){
-      this.navCtrl.push(TabsPage);
+      let data : number = 0;
+      this.navCtrl.push(TabsPage , data );
   }
 
   GoToSearchMedical(){
-    this.navCtrl.push(TabsPage);
+
+    let data   : number = 1;
+    this.navCtrl.push(TabsPage , data);
   }
 }

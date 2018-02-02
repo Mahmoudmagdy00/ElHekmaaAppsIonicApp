@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {SearchMedicalPage , TakePicPage } from '../pages';
 
+
 /**
  * Generated class for the TabsPage page.
  *
@@ -17,13 +18,19 @@ import {SearchMedicalPage , TakePicPage } from '../pages';
 export class TabsPage {
   takePage : any;
   searchPage : any;
+
+  tabToShow : number = 0 ;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    console.log(this.navParams);
+
     this.searchPage = SearchMedicalPage;
     this.takePage = TakePicPage;
+    this.tabToShow = this.navParams.data;
+
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TabsPage');
+
   }
 
 }

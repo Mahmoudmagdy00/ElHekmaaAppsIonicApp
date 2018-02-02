@@ -13,7 +13,7 @@
 </ion-header>
 
 
-<ion-tabs>
+<ion-tabs #tabParent [selectedIndex]="tabToShow" >
     <ion-tab tabIcon="basketball" tabTitle="صوره الروشته" [root]="takePage"></ion-tab>
     <ion-tab tabIcon="podium" tabTitle="اسم الدواء" [root]="searchPage"></ion-tab>
   </ion-tabs>
