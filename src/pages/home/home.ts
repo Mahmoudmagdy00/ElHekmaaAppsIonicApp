@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { TakePicPage , SearchMedicalPage , TabsPage } from '../pages';
+import { TabsPage } from '../pages';
 
 
 /**
