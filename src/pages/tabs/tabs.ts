@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { TakePicPage , SearchMedicalPage , TabsPage } from '../pages';
-
+import {SearchMedicalPage , TakePicPage } from '../pages';
 
 /**
- * Generated class for the HomePage page.
+ * Generated class for the TabsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,23 +11,19 @@ import { TakePicPage , SearchMedicalPage , TabsPage } from '../pages';
 
 @IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html',
+  selector: 'page-tabs',
+  templateUrl: 'tabs.html',
 })
-export class HomePage {
-
+export class TabsPage {
+  takePage : any;
+  searchPage : any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.searchPage = SearchMedicalPage;
+    this.takePage = TakePicPage;
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
+    console.log('ionViewDidLoad TabsPage');
   }
 
-  GoToTakePic(){
-      this.navCtrl.push(TabsPage);
-  }
-
-  GoToSearchMedical(){
-    this.navCtrl.push(TabsPage);
-  }
 }
