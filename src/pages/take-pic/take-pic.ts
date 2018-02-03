@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
+import {SearchMedicalService} from '../../shared/shared';
 /**
  * Generated class for the TakePicPage page.
  *
@@ -12,14 +13,18 @@ import { Camera } from '@ionic-native/camera';
 @Component({
   selector: 'page-take-pic',
   templateUrl: 'take-pic.html',
+  providers : [SearchMedicalService]
 })
 export class TakePicPage {
   public base64Image: string;
-  constructor(public navCtrl: NavController, public navParams: NavParams , private _cam : Camera) {
+  stds : any;
+  constructor(public navCtrl: NavController, public navParams: NavParams , private _cam : Camera , private _search : SearchMedicalService) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TakePicPage');
+    this._search.GetPhotos().then(data=>{
+            this.stds = data;
+    });
   }
 
 

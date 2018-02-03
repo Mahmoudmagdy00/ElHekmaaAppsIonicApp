@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { SearchMedicalService } from '../../shared/shared';
+
 
 /**
  * Generated class for the SearchMedicalPage page.
@@ -12,12 +12,11 @@ import { SearchMedicalService } from '../../shared/shared';
 @IonicPage()
 @Component({
   selector: 'page-search-medical',
-  templateUrl: 'search-medical.html',
-  providers : [SearchMedicalService]
+  templateUrl: 'search-medical.html'
 })
 export class SearchMedicalPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams , private _searchService : SearchMedicalService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams  ) {
   }
 
   ionViewDidLoad() {

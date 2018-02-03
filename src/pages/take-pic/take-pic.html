@@ -14,14 +14,27 @@
 
 
 <ion-content padding>
-    <button ion-button block (click)="takePicture()">صور الروشتة</button>
 
-    <!-- الصوره
-    <img [src]="base64Image" *ngIf="base64Image" /> -->
+    <ion-label dir="rtl"  >صور الروشتة</ion-label>
+    <button ion-button block (click)="takePicture()" *ngIf="!base64Image">صور الروشتة</button>
+    <ion-item dir="rtl">
 
+    <img [src]="base64Image" width="70"   *ngIf="base64Image" />
+  </ion-item>
 
-    <ion-item>
+    <ion-item dir="rtl">
       <ion-label  >ملاحظات</ion-label>
+      <br/>
       <ion-textarea rows="5"></ion-textarea>
     </ion-item>
+
+    <ion-item dir="rtl">
+      <ion-label  >اقتراح ادوية بديلة من الصيدلي </ion-label>
+      <ion-checkbox></ion-checkbox>
+    </ion-item>
+    <br/>
+    <br/>
+    <br/>
+    <button ion-button block >متابعة الشراء</button>
+
 </ion-content>

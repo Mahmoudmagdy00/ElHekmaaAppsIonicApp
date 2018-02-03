@@ -4,7 +4,7 @@ import{Http } from '@angular/http'
 
 
 export class SearchMedicalService{
-  private baseUrl = 'https://jsonplaceholder.typicode.com/photos';
+  private baseUrl = 'http://localhost:50506/api/Test/GetStd';
   constructor(private _http : Http){
 
   }
