@@ -22,4 +22,6 @@ export class SearchMedicalPage {
     console.log('ionViewDidLoad SearchMedicalPage');
   }
 
+
+
 }

@@ -21,16 +21,17 @@ export class TabsPage {
 
   tabToShow : number = 0 ;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    console.log(this.navParams);
-
     this.searchPage = SearchMedicalPage;
     this.takePage = TakePicPage;
     this.tabToShow = this.navParams.data;
 
+
   }
 
   ionViewDidLoad() {
-
   }
 
+  GoHome(){
+    this.navCtrl.popToRoot();
+  }
 }
