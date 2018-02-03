@@ -17,6 +17,12 @@
 
 
 <ion-content padding>
+
+<div *ngFor='let p of photos;let i = index'>
+  <span *ngIf="i==2">{{p.title}}</span>
+
+</div>
+
 <br/>
 <button ion-button block (click)="GoToTakePic()"> الطلب بواسطه صوره الروشته  </button>
 <button ion-button block (click)="GoToSearchMedical()"> الطلب بواسطه اسم الدواء  </button>

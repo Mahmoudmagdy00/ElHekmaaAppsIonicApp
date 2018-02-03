@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TabsPage } from '../pages';
-
+import { SearchMedicalService } from '../../shared/shared';
 
 /**
  * Generated class for the HomePage page.
@@ -14,14 +14,18 @@ import { TabsPage } from '../pages';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
+  providers : [SearchMedicalService]
 })
 export class HomePage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  photos : any  ;
+  constructor(public navCtrl: NavController, public navParams: NavParams , private _searchMed : SearchMedicalService) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
+      this._searchMed.GetPhotos().then(data => {
+        this.photos=data;
+
+      });
   }
 
   GoToTakePic(){
@@ -34,4 +38,5 @@ export class HomePage {
     let data   : number = 1;
     this.navCtrl.push(TabsPage , data);
   }
+
 }

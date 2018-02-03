@@ -2,11 +2,16 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+// import { HTTP_PROVIDERS } from '@angular/http'
+
 
 import { HomePage  , TabsPage } from '../pages/pages';
 
+import { SearchMedicalService } from '../shared/shared';
+
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers : [ SearchMedicalService]
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -32,9 +37,11 @@ export class MyApp {
   }
 
   OpenTakePicPage(){
-      this.nav.push(TabsPage);
+     let data : number  = 0;
+      this.nav.push(TabsPage,data);
   }
   OpenSearchMedicalPage(){
-    this.nav.push(TabsPage);
+    let data : number = 1;
+    this.nav.push(TabsPage,data);
   }
 }

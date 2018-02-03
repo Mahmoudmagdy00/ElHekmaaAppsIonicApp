@@ -8,15 +8,19 @@ import { HomePage , TakePicPage , SearchMedicalPage , TabsPage } from '../pages/
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from '@ionic-native/camera';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+
+
 
 
 @NgModule({
   declarations: [
     MyApp,
-HomePage , TakePicPage , SearchMedicalPage , TabsPage
+    HomePage , TakePicPage , SearchMedicalPage , TabsPage
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, HttpClientModule , HttpModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
