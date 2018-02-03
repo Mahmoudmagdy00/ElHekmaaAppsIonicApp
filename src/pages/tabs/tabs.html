@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>TabsPage</ion-title>
+    <ion-title>صيدلية الحكمه</ion-title>
     <ion-buttons end>
         <button (click)="GoHome()"  >
           <ion-icon name="home"></ion-icon>
@@ -19,6 +19,6 @@
 
 
 <ion-tabs #tabParent [selectedIndex]="tabToShow" >
-    <ion-tab tabIcon="basketball" tabTitle="صوره الروشته" [root]="takePage"></ion-tab>
+    <ion-tab tabIcon="basketball" tabTitle="صورة الروشتة" [root]="takePage"></ion-tab>
     <ion-tab tabIcon="podium" tabTitle="اسم الدواء" [root]="searchPage"></ion-tab>
   </ion-tabs>

@@ -14,8 +14,14 @@
 
 
 <ion-content padding>
-    <button ion-button block (click)="takePicture()">Take a Picture</button>
+    <button ion-button block (click)="takePicture()">صور الروشتة</button>
 
-    Latest Picture:
-    <img [src]="base64Image" *ngIf="base64Image" />
+    <!-- الصوره
+    <img [src]="base64Image" *ngIf="base64Image" /> -->
+
+
+    <ion-item>
+      <ion-label  >ملاحظات</ion-label>
+      <ion-textarea rows="5"></ion-textarea>
+    </ion-item>
 </ion-content>

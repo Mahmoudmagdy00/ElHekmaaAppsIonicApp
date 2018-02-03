@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TabsPage } from '../pages';
-import { SearchMedicalService } from '../../shared/shared';
 
 /**
  * Generated class for the HomePage page.
@@ -13,19 +12,15 @@ import { SearchMedicalService } from '../../shared/shared';
 @IonicPage()
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html',
-  providers : [SearchMedicalService]
+  templateUrl: 'home.html'
 })
 export class HomePage {
   photos : any  ;
-  constructor(public navCtrl: NavController, public navParams: NavParams , private _searchMed : SearchMedicalService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams ) {
   }
 
   ionViewDidLoad() {
-      this._searchMed.GetPhotos().then(data => {
-        this.photos=data;
 
-      });
   }
 
   GoToTakePic(){

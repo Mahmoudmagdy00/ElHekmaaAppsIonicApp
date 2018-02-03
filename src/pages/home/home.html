@@ -11,20 +11,16 @@
         <ion-icon name="menu"  ></ion-icon>
 
       </button>
-      <ion-title>Home Page</ion-title>
+      <ion-title>صيدلية الحكمه</ion-title>
       </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
 
-<div *ngFor='let p of photos;let i = index'>
-  <span *ngIf="i==2">{{p.title}}</span>
-
-</div>
 
 <br/>
-<button ion-button block (click)="GoToTakePic()"> الطلب بواسطه صوره الروشته  </button>
-<button ion-button block (click)="GoToSearchMedical()"> الطلب بواسطه اسم الدواء  </button>
+<button ion-button block (click)="GoToTakePic()"> الطلب بواسطة صورة الروشتة  </button>
+<button ion-button block (click)="GoToSearchMedical()"> الطلب بواسطة اسم الدواء  </button>
 
 </ion-content>
