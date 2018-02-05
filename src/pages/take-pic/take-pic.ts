@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 import {SearchMedicalService} from '../../shared/shared';
+
 /**
  * Generated class for the TakePicPage page.
  *
@@ -15,6 +16,8 @@ import {SearchMedicalService} from '../../shared/shared';
   templateUrl: 'take-pic.html',
   providers : [SearchMedicalService]
 })
+
+
 export class TakePicPage {
   public base64Image: string;
   stds : any;

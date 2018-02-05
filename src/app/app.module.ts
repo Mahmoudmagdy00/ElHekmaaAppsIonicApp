@@ -3,7 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage , TakePicPage , SearchMedicalPage , TabsPage } from '../pages/pages';
+import { HomePage , TakePicPage , SearchMedicalPage , TabsPage,LoginPage,AuthProvider } from '../pages/pages';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -17,7 +17,7 @@ import { HttpModule } from '@angular/http';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage , TakePicPage , SearchMedicalPage , TabsPage
+    HomePage , TakePicPage , SearchMedicalPage , TabsPage,LoginPage
   ],
   imports: [
     BrowserModule, HttpClientModule , HttpModule,
@@ -26,13 +26,14 @@ import { HttpModule } from '@angular/http';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-HomePage , TakePicPage , SearchMedicalPage ,TabsPage
+HomePage , TakePicPage , SearchMedicalPage ,TabsPage,LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Camera,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthProvider
   ]
 })
 export class AppModule {}

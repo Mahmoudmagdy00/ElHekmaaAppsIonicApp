@@ -5,9 +5,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 // import { HTTP_PROVIDERS } from '@angular/http'
 
 
-import { HomePage  , TabsPage } from '../pages/pages';
+import { HomePage  , TabsPage , LoginPage , AuthProvider} from '../pages/pages';
 
 import { SearchMedicalService } from '../shared/shared';
+import { LoadingController } from 'ionic-angular';
 
 @Component({
   templateUrl: 'app.html',
@@ -16,10 +17,10 @@ import { SearchMedicalService } from '../shared/shared';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any ;
 
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public _auth : AuthProvider , public loadingCtrl: LoadingController) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -28,13 +29,34 @@ export class MyApp {
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
+    // this.platform.ready().then(() => {
+    //   // Okay, so the platform is ready and our plugins are available.
+    //   // Here you can do any higher level native things you might need.
+    //   this.statusBar.styleDefault();
+    //   this.splashScreen.hide();
+    // });
+    this.presentLoading();
+    this._auth.login().then((isLoggedIn)=>{
+      if(isLoggedIn){
+        this.rootPage = HomePage;
+      }else {
+        this.rootPage = LoginPage;
+      }
     });
+
   }
+
+
+
+  presentLoading() {
+    let loader = this.loadingCtrl.create({
+      content: "Please wait...",
+      duration: 1000
+    });
+    loader.present();
+  }
+
+
 
   OpenTakePicPage(){
      let data : number  = 0;
