@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-// import { HTTP_PROVIDERS } from '@angular/http'
+ import { Nav } from 'ionic-angular';
+// import { StatusBar } from '@ionic-native/status-bar';
+// import { SplashScreen } from '@ionic-native/splash-screen';
+// // import { HTTP_PROVIDERS } from '@angular/http'
 
 
 import { HomePage  , TabsPage , LoginPage , AuthProvider} from '../pages/pages';
