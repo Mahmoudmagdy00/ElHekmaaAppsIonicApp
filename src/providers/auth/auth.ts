@@ -15,13 +15,13 @@ export class AuthProvider {
     return new Promise((resolve)=>{
 
       setTimeout(() => {
-        debugger;
-        if(localStorage.getItem("userName" ) == 'admin' && localStorage.getItem("password") == 'admin'){
-          resolve(true);
-        }else{
-          resolve(false);
-        }
-        //resolve(false);
+        // debugger;
+        // if(localStorage.getItem("userName" ) == 'admin' && localStorage.getItem("password") == 'admin'){
+        //   resolve(true);
+        // }else{
+        //   resolve(false);
+        // }
+        resolve(false);
 
       }, 3000);
 

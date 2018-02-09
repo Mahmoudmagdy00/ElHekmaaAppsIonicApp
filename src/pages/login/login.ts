@@ -1,7 +1,7 @@
-import { Component , ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../pages';
-
+import { SearchMedicalService } from '../../shared/shared';
 /**
  * Generated class for the LoginPage page.
  *
@@ -13,11 +13,12 @@ import { HomePage } from '../pages';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
+  providers: [SearchMedicalService]
 })
 export class LoginPage {
-  @ViewChild('userName') user ;
-  @ViewChild('password') pass ;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  @ViewChild('userName') user;
+  @ViewChild('password') pass;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _search: SearchMedicalService) {
   }
 
   ionViewDidLoad() {
@@ -25,11 +26,31 @@ export class LoginPage {
   }
 
 
-  signIn(){
-// Store
-        localStorage.setItem("userName", this.user.value);
-        localStorage.setItem("password", this.pass.value);
+  signIn() {
+    // Store
+    // localStorage.setItem("userName", this.user.value);
+    // localStorage.setItem("password", this.pass.value);
 
+    // this._search.PostLogin(this.user.value, this.pass.value).subscribe(data => {
+    //   debugger;
+    //   console.log(data);
+
+    // },
+    //   error => { console.log(error) }, () => {
+    //     debugger;
+    //     this.navCtrl.push(HomePage);
+    //   });;
+    this._search.GetData().subscribe(data => {
+      debugger;
+      console.log(data);
+
+    },
+      error => { console.log(error) }, () => {
+        debugger;
         this.navCtrl.push(HomePage);
+      });;
+
+
+
   }
 }

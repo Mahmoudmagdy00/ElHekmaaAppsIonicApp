@@ -1,17 +1,58 @@
+
 import { Injectable } from '@angular/core';
-import{Http } from '@angular/http'
+import { GlobalService } from './global.service';
 @Injectable()
 
+//  GetPositiveCommentFeeds(ItemID: string) {
+//         return this._globalService.GetDataObservable('gallery/GetPositiveCommentFeeds?ItemID=' + ItemID);
+//     }
 
-export class SearchMedicalService{
-  private baseUrl = 'http://localhost:50506/api/Test/GetStd';
-  constructor(private _http : Http){
+//     PostPositiveFeedbacks(GalleryID: number) {
+//         var dic1: Dictionary[] = [
+//             new Dictionary("GalleryID", String(GalleryID)),
+
+//         ];
+//         return this._globalService.PostData('gallery/PostPositiveFeedbacks', dic1);
+//     }
+
+export class SearchMedicalService {
+
+
+
+  constructor(private _globalService: GlobalService) {
 
   }
 
-  GetPhotos(){
-    return new Promise(resolve=>{
-        this._http.get(`${this.baseUrl}`).subscribe(res =>resolve(res.json()));
-    });
+
+
+  GetData() {
+    return this._globalService.GetDataObservable('api/Test/GetStd');
+  }
+
+
+  PostLogin(username: string, pass: string) {
+    debugger;
+    var dic1: Dictionary[] = [
+      new Dictionary("username", username),
+      new Dictionary("password", pass),
+      new Dictionary("grant_type", "password"),
+
+    ];
+
+    return this._globalService.PostData('token', dic1);
+  }
+
+}
+
+
+export class Dictionary {
+
+  public Key: string;
+  public Value: string;
+  constructor(private _key: string, private _value: string) {
+    this.Key = this._key;
+    this.Value = this._value;
   }
 }
+
+

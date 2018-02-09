@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage , TakePicPage , SearchMedicalPage , TabsPage,LoginPage,AuthProvider } from '../pages/pages';
+import { GlobalService }from '../shared/global.service';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -26,12 +27,13 @@ import { HttpModule } from '@angular/http';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-HomePage , TakePicPage , SearchMedicalPage ,TabsPage,LoginPage
+HomePage , TakePicPage , SearchMedicalPage ,TabsPage,LoginPage ,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Camera,
+    GlobalService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider
   ]
