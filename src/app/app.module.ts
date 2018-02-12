@@ -3,7 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage , TakePicPage , SearchMedicalPage , TabsPage,LoginPage,AuthProvider } from '../pages/pages';
+import { HomePage , TakePicPage , SearchMedicalPage , TabsLoginPage , SignOutPage ,TabsPage,LoginPage,AuthProvider } from '../pages/pages';
 import { GlobalService }from '../shared/global.service';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -18,7 +18,7 @@ import { HttpModule } from '@angular/http';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage , TakePicPage , SearchMedicalPage , TabsPage,LoginPage
+    HomePage , TakePicPage , SearchMedicalPage , TabsPage,LoginPage ,  TabsLoginPage , SignOutPage
   ],
   imports: [
     BrowserModule, HttpClientModule , HttpModule,
@@ -27,7 +27,7 @@ import { HttpModule } from '@angular/http';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-HomePage , TakePicPage , SearchMedicalPage ,TabsPage,LoginPage ,
+HomePage , TakePicPage , SearchMedicalPage ,TabsPage,LoginPage , TabsLoginPage , SignOutPage
   ],
   providers: [
     StatusBar,

@@ -25,22 +25,22 @@ export class SearchMedicalService {
 
 
 
-  GetData() {
-    return this._globalService.GetDataObservable('api/Test/GetStd');
-  }
+  // GetData() {
+  //   return this._globalService.GetDataObservable('api/Test/GetStd');
+  // }
 
+  // PostStd(username: string, pass: string) {
+  //   debugger;
+  //   var dic1: Dictionary[] = [
+  //     new Dictionary("name", username),
+  //     new Dictionary("age", pass)
 
-  PostLogin(username: string, pass: string) {
-    debugger;
-    var dic1: Dictionary[] = [
-      new Dictionary("username", username),
-      new Dictionary("password", pass),
-      new Dictionary("grant_type", "password"),
+  //   ];
 
-    ];
+  //   return this._globalService.PostData('api/Test/PostStd', dic1);
 
-    return this._globalService.PostData('token', dic1);
-  }
+  // }
+
 
 }
 

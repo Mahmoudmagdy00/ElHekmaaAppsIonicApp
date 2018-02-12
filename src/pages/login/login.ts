@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
+import { loginandsigoutService  } from '../../shared/shared';
 import { HomePage } from '../pages';
-import { SearchMedicalService } from '../../shared/shared';
 /**
  * Generated class for the LoginPage page.
  *
@@ -13,12 +14,13 @@ import { SearchMedicalService } from '../../shared/shared';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
-  providers: [SearchMedicalService]
+  providers: [loginandsigoutService]
 })
 export class LoginPage {
   @ViewChild('userName') user;
   @ViewChild('password') pass;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _search: SearchMedicalService) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _loginservie: loginandsigoutService) {
   }
 
   ionViewDidLoad() {
@@ -30,25 +32,38 @@ export class LoginPage {
     // Store
     // localStorage.setItem("userName", this.user.value);
     // localStorage.setItem("password", this.pass.value);
-
-    // this._search.PostLogin(this.user.value, this.pass.value).subscribe(data => {
-    //   debugger;
-    //   console.log(data);
-
-    // },
-    //   error => { console.log(error) }, () => {
-    //     debugger;
-    //     this.navCtrl.push(HomePage);
-    //   });;
-    this._search.GetData().subscribe(data => {
+    let result = '';
+    this._loginservie.PostLogin(this.user.value, this.pass.value).subscribe(data => {
       debugger;
+      result = data;
       console.log(data);
+      if(data.access_token != null) {
+        // this.storage.set('access_token', response.access_token).then(() => {
+        //   console.log('Token is set');
+        //
+        // });
+        localStorage.setItem("token", data.access_token);
+        console.log('Token is set' + data.access_token);
+
+        this.navCtrl.setRoot(HomePage);
+      }
+      else {
+        alert("To bad for you");
+      }
+
 
     },
-      error => { console.log(error) }, () => {
+      error => {
         debugger;
-        this.navCtrl.push(HomePage);
-      });;
+        console.log(error);
+      }, () => {
+        debugger;
+
+        // if (result == "OK")
+        //   this.navCtrl.push(HomePage);
+        // else
+        //   alert('Error Msg');
+      });
 
 
 

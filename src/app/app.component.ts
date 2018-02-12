@@ -5,7 +5,7 @@ import { Component, ViewChild } from '@angular/core';
 // // import { HTTP_PROVIDERS } from '@angular/http'
 
 
-import { HomePage  , TabsPage , LoginPage , AuthProvider} from '../pages/pages';
+import { HomePage  , TabsPage , TabsLoginPage , AuthProvider} from '../pages/pages';
 
 import { SearchMedicalService } from '../shared/shared';
 import { LoadingController } from 'ionic-angular';
@@ -40,7 +40,7 @@ export class MyApp {
       if(isLoggedIn){
         this.rootPage = HomePage;
       }else {
-        this.rootPage = LoginPage;
+        this.rootPage = TabsLoginPage;
       }
     });
 

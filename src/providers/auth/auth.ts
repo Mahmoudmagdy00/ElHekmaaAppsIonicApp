@@ -16,12 +16,12 @@ export class AuthProvider {
 
       setTimeout(() => {
         // debugger;
-        // if(localStorage.getItem("userName" ) == 'admin' && localStorage.getItem("password") == 'admin'){
-        //   resolve(true);
-        // }else{
-        //   resolve(false);
-        // }
-        resolve(false);
+        if(localStorage.getItem("token" ) != null ){
+          resolve(true);
+        }else{
+          resolve(false);
+        }
+        //  resolve(false);
 
       }, 3000);
 

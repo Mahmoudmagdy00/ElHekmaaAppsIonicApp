@@ -21,13 +21,14 @@ import {SearchMedicalService} from '../../shared/shared';
 export class TakePicPage {
   public base64Image: string;
   stds : any;
-  constructor(public navCtrl: NavController, public navParams: NavParams , private _cam : Camera , private _search : SearchMedicalService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams , private _cam : Camera
+  /*, private _search : SearchMedicalService*/) {
   }
 
   ionViewDidLoad() {
-    this._search.GetPhotos().then(data=>{
-            this.stds = data;
-    });
+    // this._search.GetPhotos().then(data=>{
+    //         this.stds = data;
+    // });
   }
 
 
