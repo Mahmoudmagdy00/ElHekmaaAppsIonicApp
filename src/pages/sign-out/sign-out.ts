@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { loginandsigoutService , regData } from '../../shared/shared';
-import { HomePage } from '../home/home';
+//import { LoginPage  } from '../pages';
 
 
 /**
@@ -17,7 +17,10 @@ import { HomePage } from '../home/home';
   templateUrl: 'sign-out.html',
   providers: [loginandsigoutService]
 })
+
+
 export class SignOutPage {
+  errMsg : String='';
   constructor(public navCtrl: NavController, public navParams: NavParams, private _loginservice: loginandsigoutService) {
   }
   regData : regData = new regData();
@@ -38,14 +41,12 @@ export class SignOutPage {
     },
       error => {
         debugger;
-       console.log(error) ;
+        this.errMsg = error;
+        console.log(error) ;
       }, () => {
         debugger;
+        this.navCtrl.push('LoginPage');
 
-        if (result == "OK")
-          this.navCtrl.push(HomePage);
-        else
-          alert('Error Msg');
       });
   }
 }

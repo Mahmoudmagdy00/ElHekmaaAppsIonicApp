@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {LoginPage , SignOutPage} from '../pages';
+//import { LoginPage, SignOutPage } from '../pages';
 
 /**
  * Generated class for the TabsLoginPage page.
@@ -15,16 +15,23 @@ import {LoginPage , SignOutPage} from '../pages';
   templateUrl: 'tabs-login.html',
 })
 export class TabsLoginPage {
-  tabToShow : number;
-  sLoginPage : any;
-  sSignOutPage : any;
+  // tabToShow : number;
+  // sLoginPage : any;
+  // sSignOutPage : any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.sLoginPage = LoginPage;
-    this.sSignOutPage = SignOutPage;
+    // this.sLoginPage = LoginPage;
+    // this.sSignOutPage = SignOutPage;
   }
 
   ionViewDidLoad() {
 
+  }
+
+  GoToLogin() {
+    this.navCtrl.push('LoginPage');
+  }
+  GoToSignOut() {
+    this.navCtrl.push('SignOutPage');
   }
 
 }

@@ -7,6 +7,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/finally';
+import 'rxjs/add/Observable/throw';
+import { HttpResponse } from "@angular/common/http/src/response";
 
 
 export class Dictionary {
@@ -41,7 +43,18 @@ export class GlobalService {
 
   }
 
+  GetUserInfo() {
+    debugger
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'withCredentials': 'true'
+    });
+    if (localStorage.getItem("token") != null) {
+      headers.append('Authorization', 'Bearer ' + localStorage.getItem("token"));
+    }
 
+    return this._http.get(this.GetAPIURL() + 'api/Account/UserInfo', { headers: headers });
+  }
 
   public GetDataObservable(URL: string, params?: Dictionary[]): Observable<any> {
     debugger;
@@ -95,8 +108,10 @@ export class GlobalService {
   public PostData(URL: string, params: any) {
     //debugger;
     URL = this.GetAPIURL() + URL;
+    console.log(URL);
+    // let headers = new Headers({ 'Content-Type': 'application/json;application/x-www-form-urlencoded;charset=utf-8', 'Accept': 'application/json' });
     let headers = null;
-    if (URL.toLocaleLowerCase().includes("/token"))
+    if (URL.toLocaleLowerCase().includes("/token") || URL.toLocaleLowerCase().includes("api/account/register"))
       headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8', 'Accept': 'application/json' });
     else
       headers = new Headers({ 'Content-Type': 'application/json', 'Accept': 'application/json' });
@@ -109,13 +124,13 @@ export class GlobalService {
 
     // }
     // else {
-      this.turnOnModal();
-      let request = this._http.post(URL, params, options)
-        .map(this.extractData)
-        .catch(this.handleError)
-        .finally(() => this.turnOffModal());
+    this.turnOnModal();
+    let request = this._http.post(URL, params, options)
+      .map(this.extractData)
+      .catch(this.handleError)
+      .finally(() => this.turnOffModal());
 
-      return this.intercept(request);
+    return this.intercept(request);
     // }
 
   }
@@ -124,15 +139,32 @@ export class GlobalService {
 
   private extractData(res: Response) {
     debugger;
-    let body = res.json();
+    let body;
+    try {
+      body = res.json();
+
+    } catch (e) {
+      return res;
+    }
     return body;
+
 
   }
 
-  public handleError(error: any) {
-    debugger;
-    console.log('MyError:' + error);
-    return  error;
+
+  public handleError(error: HttpResponse<any>) {
+    // debugger;
+    // let errMsg: string;
+    // if (error instanceof Response) {
+    //     const body = error.json() || '';
+    //     const err = body.error || JSON.stringify(body);
+    //     errMsg =  `${err}`;
+
+    // } else {
+    //     errMsg = error.message ? error.message : error.toString();
+    // }
+    console.log(error);
+    return Observable.throw(error.body || "Server Error");
   }
 
   public turnOnModal() {
@@ -144,7 +176,7 @@ export class GlobalService {
   }
 
   public GetAPIURL(): string {
-    return 'http://localhost:50506/';
+    return 'http://localhost:50505/';
   }
 
 
@@ -312,125 +344,13 @@ export class GlobalService {
     document.cookie = `${name}=${value}; ${expires}${cpath}`;
   }
 
-  public static GetDate(sDate: string): Date {
-    var a = sDate.split(GlobalService.SplitDate);
-    var ConvertedDate =
-      new Date(parseInt(a[0]), parseInt(a[1]) - 1, parseInt(a[2]), parseInt(a[3]), parseInt(a[4]), parseInt(a[5]));
-    return ConvertedDate;
-  }
-
-
-  // MyStrings
-  public static GalleryFeedBackTypeID: string = '18';
-  public static DiscussionTypeID: number = 28;
-  public static VacationTypeID: number = 3;
-  public static AnnouncementFeedBackTypeID: number = 13;
-
-  public static VacationSteps_AddedNew = 29;
-  public static VacationSteps_Updated = 30;
-  public static VacationSteps_ReAssigned = 26;
-  public static VacationSteps_ApprovedByHR = 25;
-  public static VacationSteps_ApprovedByDirectManager = 24;
-
-  public static CompensationSteps_HRAccept = 69;
-  public static CompensationSteps_HRReject = 70;
-
-
-  public static BalanceTypeStep_Pending = 284;
-  public static BalanceTypeStep_Deleted = 287;
-
-
-  public static AnnualLeave: number = 19;
-  public static SickLeave: number = 22;
-  public static AppURL = '/app/#/';
-  public static SplitDate = /[^0-9]/;
-
-
-  public static FillType_Subs = 'Subs';
-  public static FillType_SubsAndCurrent = 'SubsAndCurrent';
-  public static FillType_FillForRoleName = 'FillForRoleName';
-  public static FillType_FillForRoleNameOrSubAll = 'FillForRoleNameOrSubAll';
-
-
-  public static Roles_CompensationHR = 'CompensationHR';
-  public static ResignAdmin = 'ResignAdmin';
-  public static Roles_VACATIONsAdmin = 'VACATIONsAdmin';
-  // public static Roles_DomainsAdmin = 'DomainsAdmin';
-  public static TaskType_MyTasks = 'MyTasks';
-  public static TaskType_MyManagerTasks = 'MyManagerTasks';
-  public static TaskType_ManagerTasks = 'ManagerTasks';
-  public static BusinessCardAdmin = 'BusinessCardAdmin';
-  public static MsgType_Error = 'Error';
-  public static MsgType_Success = 'Success';
-  public static MsgType_Info = 'Info';
-  public static MsgType_Warning = 'Warning';
-  public static ApplicationsAdmin = 'ApplicationsAdmin';
-  public static AnnouncementAdmin = 'AnnouncementAdmin';
-
-
-  public static ExpensesPendingOnManager = 57;
-
-  public static ViewType_Pending = "Pending";
-  public static ViewType_HRTasks = "HRTasks";
-  public static ViewType_ManagerTasks = "ManagerTasks";
-  public static ViewType_MySubsView = "MySubsView";
-  public static ViewType_MyRequests = "MyRequests";
-  public static ViewType_Report = "Report";
-  public static ViewType_ReportAll = "ReportAll";
-  public static ViewType_ReportSick = "ReportSick";
-
-
-  public static ActionName_Add = "Add";
-  public static ActionName_Update = "Update";
-
-  public static ActionName_Approve = "Approve";
-
-  public static ActionName_Reject = "Reject";
-  public static ActionName_ReAssign = "ReAssign";
-  public static ActionName_Cancel = "Cancel";
-
-
-  public static RangeLoad_CurrentMonth = 'CurrentMonth';
-  public static RangeLoad_Past3Months = 'Past3Months';
-  public static RangeLoad_PastYear = 'PastYear';
-  public static RangeLoad_Past3Years = 'Past3Years';
-
-
-  public static TransportationStepsAdded: string = '208';
-  public static TransportationStepsAssignedToEmployee: string = '209';
-  public static TransportationStepsFinished: string = '210';
-  public static TransportationStepsDeleted: string = '211';
-
-  public static VACATIONsReports: string = 'VACATIONsReports';
-  public static RecruitmentAdmin: string = 'RecruitmentAdmin';
 
 
 
+}
 
-  public static TransportationAdmins = 'TransportationAdmins';
-  public static MaintenanceRequest = 'MaintenanceRequest';
-  public static MaintenanceWareHouse = 'MaintenanceWareHouse';
-  public static MaintenanceSupplyChain = 'MaintenanceSupplyChain';
-  public static MaintenanceBudget = 'MaintenanceBudget';
-  public static MaintenanceFinance = 'MaintenanceFinance';
+export interface UserInfoViewModel
+{
 
-  public static WaitingforWarehousetoconfirm = 270;
-
-  public static WaitingforCosting = 271;
-  public static WaitingforManagerapproval = 272;
-  public static Processing = 273;
-  public static Senttobudget = 274;
-  public static Senttofinance = 275;
-  public static Rejected = 276;
-  public static Finished = 277;
-  public static Canceled = 278;
-  public static WaitingforSupplyChainReleaseConfirmation = 279;
-  public static WaitingforWarehousetoReleaseitems = 280;
-  public static SupplyChainConfirmationVendorContact = 281;
-  public static WaitingforWarehousetoCollecttheItems = 282;
-  public static WaitingforSupplyChainRecieveConfirmation = 283;
-
-  public static ExamTypeID = 62;
-
-
+    UserID : string;
 }

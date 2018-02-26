@@ -1,8 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component } from '@angular/core';
+import {ToastController, IonicPage,  NavController,  NavParams} from 'ionic-angular';
 
-import { loginandsigoutService  } from '../../shared/shared';
-import { HomePage } from '../pages';
+import { loginandsigoutService , loginModel  } from '../../shared/shared';
+//import { HomePage } from '../pages';
+import { ToastOptions } from 'ionic-angular/components/toast/toast-options';
 /**
  * Generated class for the LoginPage page.
  *
@@ -17,10 +18,11 @@ import { HomePage } from '../pages';
   providers: [loginandsigoutService]
 })
 export class LoginPage {
-  @ViewChild('userName') user;
-  @ViewChild('password') pass;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _loginservie: loginandsigoutService) {
+  loginModel : loginModel = new loginModel();
+  tostOptions : ToastOptions;
+  constructor(public _toast : ToastController ,public navCtrl: NavController, public navParams: NavParams, private _loginservie: loginandsigoutService) {
+    this.tostOptions = {message : 'please verify  your creditials ' , duration : 6000 ,showCloseButton: true,
+    closeButtonText: 'Ok'};
   }
 
   ionViewDidLoad() {
@@ -29,11 +31,8 @@ export class LoginPage {
 
 
   signIn() {
-    // Store
-    // localStorage.setItem("userName", this.user.value);
-    // localStorage.setItem("password", this.pass.value);
     let result = '';
-    this._loginservie.PostLogin(this.user.value, this.pass.value).subscribe(data => {
+    this._loginservie.PostLogin(this.loginModel.UserName, this.loginModel.Password).subscribe(data => {
       debugger;
       result = data;
       console.log(data);
@@ -43,18 +42,19 @@ export class LoginPage {
         //
         // });
         localStorage.setItem("token", data.access_token);
-        console.log('Token is set' + data.access_token);
+        // console.log('Token is set' + data.access_token);
 
-        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.setRoot('HomePage').then(()=>this.navCtrl.remove(0,this.navCtrl.getActive().index));
       }
       else {
-        alert("To bad for you");
+        console.log("To bad for you");
       }
 
 
     },
       error => {
         debugger;
+        this._toast.create(this.tostOptions).present();
         console.log(error);
       }, () => {
         debugger;

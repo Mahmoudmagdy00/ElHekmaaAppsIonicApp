@@ -16,14 +16,23 @@
   </ion-navbar>
 
 </ion-header>
-<!--
+
 <ion-content padding>
-asfsdfds
-</ion-content> -->
+  <!-- <a   tabTitle="" [root]="sLoginPage"></a> -->
+  <!-- <a [routerLink]="sLoginPage"><span class="icon-rightBigArrow">Login</span></a> -->
+  <!-- <a   tabTitle="SignOut" [root]="sSignOutPage"></a> -->
+<!-- 
+  <ion-nav [root]="sLoginPage"></ion-nav>
+  <ion-nav [root]="sSignOutPage"></ion-nav> -->
 
 
+<button ion-button block (click)="GoToLogin()"> دخول </button>
+<button ion-button block (click)="GoToSignOut()"> تسجيل  </button>
+</ion-content>
+
+<!-- 
 
 <ion-tabs>
   <ion-tab tabIcon="log-in" tabTitle="Login" [root]="sLoginPage"></ion-tab>
   <ion-tab tabIcon="apps" tabTitle="SignOut" [root]="sSignOutPage"></ion-tab>
-</ion-tabs>
+</ion-tabs> -->

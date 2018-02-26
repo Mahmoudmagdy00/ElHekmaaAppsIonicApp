@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {SearchMedicalPage , TakePicPage } from '../pages';
+//import {SearchMedicalPage , TakePicPage } from '../pages';
 
 
 /**
@@ -21,8 +21,8 @@ export class TabsPage {
 
   tabToShow : number = 0 ;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.searchPage = SearchMedicalPage;
-    this.takePage = TakePicPage;
+    this.searchPage = 'SearchMedicalPage';
+    this.takePage = 'TakePicPage';
     this.tabToShow = this.navParams.data;
 
 
