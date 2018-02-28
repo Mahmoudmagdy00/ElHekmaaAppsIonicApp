@@ -3,12 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 import {SearchMedicalService} from '../../shared/shared';
 
-/**
- * Generated class for the TakePicPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -22,13 +16,11 @@ export class TakePicPage {
   public base64Image: string;
   stds : any;
   constructor(public navCtrl: NavController, public navParams: NavParams , private _cam : Camera
-  /*, private _search : SearchMedicalService*/) {
+  ) {
   }
 
   ionViewDidLoad() {
-    // this._search.GetPhotos().then(data=>{
-    //         this.stds = data;
-    // });
+   
   }
 
 
@@ -38,7 +30,7 @@ export class TakePicPage {
         targetWidth: 1000,
         targetHeight: 1000
     }).then((imageData) => {
-      // imageData is a base64 encoded string
+      
         this.base64Image = "data:image/jpeg;base64," + imageData;
     }, (err) => {
         console.log(err);

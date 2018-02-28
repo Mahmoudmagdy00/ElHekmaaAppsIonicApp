@@ -2,12 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SearchMedicalService, OrderRequest } from '../../shared/shared';
 
-/**
- * Generated class for the SearchMedicalPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -39,13 +33,6 @@ export class SearchMedicalPage {
 
     }
 
-
-      // this._search.PostOrderTest(this.OrderRequest).
-      // subscribe(data => {
-      //   console.log(data);
-      // },error => {
-      //   console.log(error);
-      // });
   }
 
 

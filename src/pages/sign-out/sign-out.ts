@@ -1,15 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { loginandsigoutService , regData } from '../../shared/shared';
-//import { LoginPage  } from '../pages';
-
-
-/**
- * Generated class for the SignOutPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -35,8 +26,6 @@ export class SignOutPage {
       debugger;
       result = data;
       console.log(data);
-
-      // alert(data);
 
     },
       error => {

@@ -1,14 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-// import { TabsPage } from '../pages';
 import { GlobalService, UserInfoViewModel } from '../../shared/shared';
 
-/**
- * Generated class for the HomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -16,6 +9,7 @@ import { GlobalService, UserInfoViewModel } from '../../shared/shared';
   templateUrl: 'home.html',
   providers: [GlobalService]
 })
+
 export class HomePage {
   photos: any;
   sUserInfoViewModel: UserInfoViewModel;
